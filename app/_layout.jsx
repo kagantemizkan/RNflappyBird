@@ -3,6 +3,8 @@ import { Canvas, useImage, Image, Group, Text, matchFont, Circle } from "@shopif
 import { useWindowDimensions, StatusBar, Platform, Dimensions, Alert } from "react-native";
 import { useSharedValue, withTiming, Easing, withSequence, withRepeat, useFrameCallback, useDerivedValue, interpolate, useAnimatedReaction, runOnJS, cancelAnimation } from "react-native-reanimated";
 import { GestureHandlerRootView, GestureDetector, Gesture } from 'react-native-gesture-handler';
+import { Audio } from 'expo-av';
+
 
 const GRAVITY = 1000;
 const JUMP_FORCE = -500;
@@ -10,8 +12,6 @@ const JUMP_FORCE = -500;
 const App = () => {
   const pipeOffset = useSharedValue(0);
 
-
-  
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('screen').height
   const bg = useImage(require("../assets/sprites/background-day.png"));
@@ -21,9 +21,15 @@ const App = () => {
   const pipeBottom = useImage(require("../assets/sprites/pipe-green.png"))
   const pipeTop = useImage(require("../assets/sprites/pipe-green-top.png"))
   const base = useImage(require("../assets/sprites/base.png"))
-  
+
   const firstBase = useSharedValue(0)
   const secondBase = useSharedValue(width)
+  
+  const sounds = {
+    wing: require('../assets/audio/wing.wav'),
+    hit: require('../assets/audio/hit.wav'),
+    point: require('../assets/audio/point.wav'),
+  };
 
   const digitImages = {
     0: useImage(require("../assets/sprites/0.png")),
@@ -114,27 +120,59 @@ const App = () => {
         withTiming(width, { duration: 0 }),
       ), -1)
   }
-  
+
   const moveTheMap = () => {
     pipeX.value = withSequence(
-        withTiming(width, { duration: 0 }),
-        withTiming(-120, { duration: 3000 / pipeSpeed.value, easing: Easing.linear }),
-        withTiming(width, { duration: 0 }),
-      )
+      withTiming(width, { duration: 0 }),
+      withTiming(-120, { duration: 3000 / pipeSpeed.value, easing: Easing.linear }),
+      withTiming(width, { duration: 0 }),
+    )
   }
+
+  const [soundObjects, setSoundObjects] = useState({});
+
+
+  useEffect(() => {
+    const loadSounds = async () => {
+      const loadedSounds = {};
+      for (const [key, sound] of Object.entries(sounds)) {
+        const { sound: soundObject } = await Audio.Sound.createAsync(sound);
+        loadedSounds[key] = soundObject;
+      }
+      setSoundObjects(loadedSounds);
+    };
+
+    loadSounds();
+
+    return () => {
+      // Cleanup: unload sounds
+      for (const soundObject of Object.values(soundObjects)) {
+        soundObject.unloadAsync();
+      }
+    };
+  }, []);
+
+  const playSound = async (soundKey) => {
+    const soundObject = soundObjects[soundKey];
+    if (soundObject) {
+      await soundObject.setVolumeAsync(1);
+      await soundObject.replayAsync();
+    }
+  };
 
   useAnimatedReaction(
     () => pipeX.value,
     (currentValue, previousValue) => {
       const middle = birdX;
 
-      if(previousValue && currentValue < -100 && previousValue > -100) {
+      if (previousValue && currentValue < -100 && previousValue > -100) {
         pipeOffset.value = Math.random() * 400 - 200;
         cancelAnimation(pipeX)
         runOnJS(moveTheMap)();
       }
 
       if (currentValue !== previousValue && previousValue && currentValue <= middle && previousValue > middle) {
+        runOnJS(playSound)('point')
         runOnJS(setScore)(score + 1)
       }
     }
@@ -162,15 +200,17 @@ const App = () => {
 
       if (currentValue > height - 115 || currentValue < 0) {
         console.log("Game over")
+        runOnJS(playSound)("hit")
         gameOver.value = true;
       }
 
       const isColliding = obstacles.value.some((rect) => isPointCollidingWithRect(center, rect))
-      
-      if(isColliding) {
+
+      if (isColliding) {
+        runOnJS(playSound)("hit")
         gameOver.value = true;
       }
-    
+
     }
   )
 
@@ -199,9 +239,6 @@ const App = () => {
   }, [])
 
 
-
-
-
   const restartGame = () => {
     'worklet';
     birdY.value = height / 3;
@@ -211,6 +248,8 @@ const App = () => {
     runOnJS(moveTheMap)();
     runOnJS(moveTheBase)();
     runOnJS(setScore)(0);
+    nightOpacity.value = withTiming(0, { duration: 0, easing: Easing.linear })
+    dayOpacity.value = withTiming(1, { duration: 0, easing: Easing.linear })
   }
 
   const gesture = Gesture.Tap().onStart(() => {
@@ -218,6 +257,7 @@ const App = () => {
       restartGame();
     } else {
       birdYVelocity.value = JUMP_FORCE;
+      runOnJS(playSound)('wing')
     }
   })
 
@@ -226,7 +266,7 @@ const App = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <GestureDetector gesture={gesture}>
         <Canvas style={{ width, height }}>
-          <StatusBar />
+
           {/* Background */}
           <Image image={bg} opacity={dayOpacity} width={width} height={height} fit={"cover"} />
           <Image image={bgNight} opacity={nightOpacity} width={width} height={height} fit={"cover"} />
