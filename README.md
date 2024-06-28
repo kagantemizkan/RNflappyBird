@@ -60,10 +60,4 @@ Here are some screenshots of the app:
 
 If you would like to contribute, please open a pull request or create an issue.
 
-## License
-
-This project is licensed under the MIT License.
-
-
 Go check out notJust.dev for the tutorial -> https://www.youtube.com/watch?v=9F4aICEisVI
-
