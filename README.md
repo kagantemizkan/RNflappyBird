@@ -1,50 +1,70 @@
-# Welcome to your Expo app 👋
+# React Native Flappy Bird Clone
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a clone of the classic Flappy Bird game developed using React Native.
 
-## Get started
+## Technologies Used
 
-1. Install dependencies
+- **React Native**: For mobile app development.
+- **React Native Skia**: For 2D graphics rendering.
+- **React Native Reanimated**: For animations.
+- **Expo Audio**: For playing sound files.
+- **React Native Gesture Handler**: For handling touch and gesture interactions.
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+- **Day-Night Cycle**: The background switches between day and night every 3 points.
+- **Sound Effects**: Includes wing flapping, hitting, and point scoring sounds.
+- **Animated Base Movement**: The base moves continuously.
+- **Dynamic Obstacles**: Pipes move and reposition dynamically.
+- **Score Display**: The player's current score is displayed on the screen.
+- **Collision Detection**: The game ends if the bird hits the pipes or the ground.
+- **Restart Game**: Touch the screen to restart the game after it ends.
 
-   ```bash
-    npx expo start
-   ```
+## Installation
 
-In the output, you'll find options to open the app in a
+To run the project, follow these steps:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. **Clone the Repository:**
+    ```sh
+    git clone https://github.com/your_username/flappy-bird-clone.git
+    cd flappy-bird-clone
+    ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+2. **Install Dependencies:**
+    ```sh
+    npm install
+    ```
 
-## Get a fresh project
+3. **Start the Application:**
+    ```sh
+    npm start
+    ```
 
-When you're ready, run:
+## Usage
 
-```bash
-npm run reset-project
-```
+When the app starts, tap the screen to make the bird fly and try to pass through the pipes. The background will switch between day and night every 3 points.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Screenshots
 
-## Learn more
+Here are some screenshots of the app:
 
-To learn more about developing your project with Expo, look at the following resources:
+![Day Background](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/1479894d-02eb-4f84-9851-3f3758e41d38)
+*Day background of the game.*
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+![Night Background](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/75a7d35b-e761-421c-8f0e-6f8012dbc0eb)
+*Night background of the game.*
 
-## Join the community
+[unsdadsadsadsadsatitled.webm](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/07ccfb07-f06b-432c-b083-02cca6d238d2)
+*Game over screen when the bird hits an obstacle.*
 
-Join our community of developers creating universal apps.
+## Contributing
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+If you would like to contribute, please open a pull request or create an issue.
+
+## License
+
+This project is licensed under the MIT License.
+
+
+Go check out notJust.dev for the tutorial -> https://www.youtube.com/watch?v=9F4aICEisVI
+
