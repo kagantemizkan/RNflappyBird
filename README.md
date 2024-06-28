@@ -20,6 +20,21 @@ This project is a clone of the classic Flappy Bird game developed using React Na
 - **Collision Detection**: The game ends if the bird hits the pipes or the ground.
 - **Restart Game**: Touch the screen to restart the game after it ends.
 
+## Usage
+
+When the app starts, tap the screen to make the bird fly and try to pass through the pipes. The background will switch between day and night every 3 points.
+
+## Screenshots
+
+Here are some screenshots of the app:
+
+[unsdadsadsadsadsatitled.webm](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/07ccfb07-f06b-432c-b083-02cca6d238d2)
+
+<p float="left">
+  <img src="https://github.com/kagantemizkan/RNflappyBird/assets/46727689/1479894d-02eb-4f84-9851-3f3758e41d38" alt="Day Background" width="200"/>
+  <img src="https://github.com/kagantemizkan/RNflappyBird/assets/46727689/75a7d35b-e761-421c-8f0e-6f8012dbc0eb" alt="Night Background" width="200"/>
+</p>
+
 ## Installation
 
 To run the project, follow these steps:
@@ -39,23 +54,7 @@ To run the project, follow these steps:
     ```sh
     npm start
     ```
-
-## Usage
-
-When the app starts, tap the screen to make the bird fly and try to pass through the pipes. The background will switch between day and night every 3 points.
-
-## Screenshots
-
-Here are some screenshots of the app:
-
-[unsdadsadsadsadsatitled.webm](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/07ccfb07-f06b-432c-b083-02cca6d238d2)
-
-<p float="left">
-  <img src="https://github.com/kagantemizkan/RNflappyBird/assets/46727689/1479894d-02eb-4f84-9851-3f3758e41d38" alt="Day Background" width="200"/>
-  <img src="https://github.com/kagantemizkan/RNflappyBird/assets/46727689/75a7d35b-e761-421c-8f0e-6f8012dbc0eb" alt="Night Background" width="200"/>
-</p>
-
-
+    
 ## Contributing
 
 If you would like to contribute, please open a pull request or create an issue.
