@@ -55,8 +55,8 @@ To run the project, follow these steps:
     npm start
     ```
     
-## Contributing
+## 🚀 More
 
 If you would like to contribute, please open a pull request or create an issue.
 
-Go check out notJust.dev for the tutorial -> https://www.youtube.com/watch?v=9F4aICEisVI
+Go check out [Simon Grimm](https://www.youtube.com/watch?v=pTonpjmKtiE) for the tutorial 
