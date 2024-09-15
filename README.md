@@ -59,4 +59,4 @@ To run the project, follow these steps:
 
 If you would like to contribute, please open a pull request or create an issue.
 
-Go check out [Simon Grimm](https://www.youtube.com/watch?v=pTonpjmKtiE) for the tutorial 
+Go check out [notJust․dev](https://www.youtube.com/watch?v=9F4aICEisVI) for the tutorial 
