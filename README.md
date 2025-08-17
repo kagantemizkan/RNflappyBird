@@ -28,7 +28,7 @@ When the app starts, tap the screen to make the bird fly and try to pass through
 
 Here are some screenshots of the app:
 
-[unsdadsadsadsadsatitled.webm](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/07ccfb07-f06b-432c-b083-02cca6d238d2)
+[video.webm](https://github.com/kagantemizkan/RNflappyBird/assets/46727689/07ccfb07-f06b-432c-b083-02cca6d238d2)
 
 <p float="left">
   <img src="https://github.com/kagantemizkan/RNflappyBird/assets/46727689/1479894d-02eb-4f84-9851-3f3758e41d38" alt="Day Background" width="200"/>
